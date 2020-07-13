@@ -4,7 +4,7 @@ import TextField from "@material-ui/core/TextField";
 const SignUp = () => {
   return (
     <div>
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField   label="Outlined" variant="outlined" />
     </div>
   );
 };

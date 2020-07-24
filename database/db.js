@@ -1,7 +1,8 @@
 var mongoose = require("mongoose");
+var config = require("config");
 const connectDB = async () => {
   mongoose
-    .connect("mongodb://localhost/Bakery", {
+    .connect(config.get("db"), {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })

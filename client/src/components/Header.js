@@ -1,40 +1,31 @@
-import React from "react";
-import { Link } from "react-router-dom";
-const Header = () => {
-  var counter = 0;
-  return (
-    <div>
-      <ul className="social_media_lists mr-0">
-        <li className="nav-item border rounded-circle mx-2">
-          <Link to="/">
-            <i className="fa fa-facebook p-2" aria-hidden="true"></i>
-          </Link>
-        </li>
-        <li className="nav-item border rounded-circle mx-2">
-          <Link to="/">
-            <i className="fa fa-google p-2" aria-hidden="true"></i>
-          </Link>
-        </li>
-        <li className="nav-item border rounded-circle mx-2">
-          <Link to="/">
-            <i className="fa fa-twitter p-2" aria-hidden="true"></i>
-          </Link>
-        </li>
-        <li className="nav-item border rounded-circle mx-2">
-          <Link to="/">
-            <i className="fa fa-linkedin p-2" aria-hidden="true"></i>
-          </Link>
-        </li>
-        <li className="nav-item border rounded-circle mx-2">
-          <Link to="/">
-            <i className="fa fa-instagram p-2" aria-hidden="true"></i>
-          </Link>
-        </li>
-      </ul>
+import React, { Fragment } from "react";
+import { Link, withRouter, useHistory } from "react-router-dom";
+import { isAuthenticated, logout } from "../clientStorages.js/auth";
 
-      <nav className="navbar navbar-expand-lg navbar-light   ">
+const Header = ({ history }) => {
+  history = useHistory();
+  const handleLogOut = (evt) => {
+    logout(() => {
+      history.push("/login");
+    });
+  };
+  /* const componentDidMount = () => {
+    window.addEventListener("scroll", () => {
+      const isTop = window.scrollY;
+      const nav = document.getElementById("nav");
+      if (isTop > 500) {
+        nav.classList.add("scrolled");
+      } else {
+        nav.classList.remove("scrolled");
+      }
+    });
+  };*/
+
+  const showNavbar = () => (
+    <div>
+      <nav id="nav" className="navbar navbar-expand-lg navbar-light mt-0">
         <img
-          src={process.env.PUBLIC_URL + "img/logo.png"}
+          src="/img/logo.png"
           alt="logo"
           className="img-fluid rounded-circle p-2"
           style={{ width: "4.9em", padding: "0" }}
@@ -52,61 +43,92 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul
-            className="navbar-nav m-auto ml-md-5"
+            className="
+              navbar-nav
+              ml-auto
+              mt-2
+              mt-lg-0"
             style={{ padding: "0.6rem" }}
           >
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Menu
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Pages
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Blog
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link">
-                Contact Us
-              </Link>
-            </li>
-          </ul>
-          <ul className="navbar-nav   mr-md-5">
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">
-                SignIn
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/signup" className="nav-link">
-                SignUp
-              </Link>
-            </li>
-            <li className="nav-item mx-2">
-              <Link to="/">
-                <div className="cart-icon">
-                  <i className="fa fa-shopping-cart p-2" aria-hidden="true">
-                    <div className="cart-item"></div>
-                    <span className="shopping-counter">{counter}</span>
-                  </i>
-                </div>
-              </Link>
-            </li>
+            {!isAuthenticated() && (
+              <Fragment>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    <i className="fa fa-home" aria-hidden="true"></i> Home
+                  </Link>
+                </li>
+
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-link">
+                    <i className="fa fa-pencil-square-o" aria-hidden="true"></i>{" "}
+                    Signup
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">
+                    <i className="fa fa-sign-in" aria-hidden="true"></i> Login
+                  </Link>
+                </li>
+              </Fragment>
+            )}
+
+            {isAuthenticated() && isAuthenticated().role === 0 && (
+              <Fragment>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    <i className="fa fa-home" aria-hidden="true"></i> Dashboard
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    Pages
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    Contact Us
+                  </Link>
+                </li>
+
+                <li className="nav-item mx-2">
+                  <Link to="/">
+                    <div className="cart-icon">
+                      <i className="fa fa-shopping-cart p-2" aria-hidden="true">
+                        <div className="cart-item"></div>
+                        <span className="shopping-counter">0</span>
+                      </i>
+                    </div>
+                  </Link>
+                </li>
+              </Fragment>
+            )}
+            {isAuthenticated() && isAuthenticated().role === 1 && (
+              <Fragment>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    <i className="fa fa-home" aria-hidden="true"></i> Dashboard
+                  </Link>
+                </li>
+              </Fragment>
+            )}
+            {isAuthenticated() && (
+              <Fragment>
+                <li className="nav-item">
+                  <button
+                    className="btn text-decoration-none btn-link   pl-0"
+                    onClick={handleLogOut}
+                  >
+                    <i className="fa fa-sign-out" aria-hidden="true"></i> Logout
+                  </button>
+                </li>
+              </Fragment>
+            )}
           </ul>
         </div>
       </nav>
     </div>
   );
+  return <header>{showNavbar()}</header>;
 };
 
-export default Header;
+export default withRouter(Header);

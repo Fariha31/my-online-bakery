@@ -7,26 +7,32 @@ body {
   width: 100%;
   height: 100vh;
 }
+/**Header Component*/
 .navbar {
-  position: static;
-  top: 0;
   background: rgb(231, 226, 221);
   z-index: 1;
   text-transform: capitalize;
 }
-.nav-link {
-  font-size: 19px;
+.navbar .nav-link {
+  font-size: 18px;
   font-weight: bold;
   text-transform: capitalize;
 }
-.social_media_lists li {
-  display: inline-block;
-  margin-left: 10px;
-  font-size: 20px;
+.btn-link {
+  color: rgba(0, 0, 0, 0.5) !important;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: bold;
 }
-.social_media_lists li i {
-  color: saddlebrown;
-  margin-top: 2px;
+
+.scrolled {
+  background: rgb(231, 226, 221);
+  z-index: 1;
+}
+.scrolled .nav-link {
+  font-size: 19px;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 .cart-icon i {
   font-size: 35px;
@@ -44,4 +50,80 @@ body {
   border-radius: 40%;
   color: white;
   font-weight: bold;
+}
+/*SignUp Component*/
+.signup-container {
+  height: 100vh;
+}
+/*cakes.js*/
+.cakes {
+  padding: 4rem 0;
+  background: #e1d4d4;
+}
+.cakes_section_title h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 5rem;
+  text-transform: capitalize;
+  letter-spacing: 0.1rem;
+  font-family: "Yellowtail", cursive;
+  font-weight: bold;
+}
+.cakes-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+}
+.cake_img_container {
+  position: relative;
+  overflow: hidden;
+}
+.cake_bag_btn {
+  position: absolute;
+  top: 70%;
+  right: 0;
+  background: #f09d51;
+  border: none;
+  text-transform: uppercase;
+  padding: 0.5rem 0.75rem;
+  letter-spacing: 0.1rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  transform: translateX(101%);
+  cursor: pointer;
+}
+.cake_bag_btn:hover {
+  color: white;
+}
+.fa-shopping-cart {
+  margin-right: 0.5rem;
+}
+.cake_img_container:hover .cake_bag_btn {
+  transform: translateX(0);
+}
+.cake-img {
+  display: block;
+  width: 100%;
+  min-height: 12rem;
+  transition: all 0.3s ease;
+}
+.cake_img_container:hover .cake-img {
+  opacity: 0.5;
+}
+.cake h3 {
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  margin-top: 1rem;
+  letter-spacing: 0.1rem;
+  text-align: center;
+}
+.cake h4 {
+  margin-top: 0.7rem;
+  letter-spacing: 0.1rem;
+  color: #f09d51;
+  text-align: center;
 }

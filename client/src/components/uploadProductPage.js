@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { uploadProducts } from "../api/auth";
 import {
   TextField,
   Grid,
@@ -30,25 +29,28 @@ const UploadProductPage = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [body, setBody] = useState("");
-  const [image, setImage] = useState("");
+  //const [image, setImage] = useState("");
   const [photo, setPhoto] = useState("");
 
-  const prodDetails = async () => {
-    const formData = new FormData();
-    formData.append("file", image);
-    formData.append("upload_preset", "Bakery-MERN STACK");
+  const prodImage = async (e) => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "Bakery-MERN STACK");
     await axios
-      .post("https://api.cloudinary.com/v1_1/fariha31/image/upload", formData)
+      .post("https://api.cloudinary.com/v1_1/fariha31/image/upload", data)
       .then((res) => setPhoto(res.data.secure_url))
       .catch((err) => console.log(err));
 
-    await axios
-      .post("/api/products/addProduct", { title, body, price, photo })
-      .then((res) => {
-        console.log("returning");
-        console.log(res.data.photo);
-      })
-      .catch((error) => console.log(error));
+    const AddingProd = async () => {
+      await axios
+        .post("/api/products/addProduct", { title, body, price, photo })
+        .then((res) => {
+          console.log("returning");
+          console.log(res.data.photo);
+        })
+        .catch((error) => console.log(error));
+    };
   };
   return (
     <div>
@@ -64,7 +66,7 @@ const UploadProductPage = () => {
                 type="file"
                 className="form-control-file"
                 id="exampleFormControlFile1"
-                onChange={(e) => setImage(e.target.files[0])}
+                onChange={prodImage}
               />
               <TextField
                 className={classes.textfield}
@@ -118,7 +120,7 @@ const UploadProductPage = () => {
                 variant="outlined"
                 color="secondary"
                 fullWidth
-                onClick={() => prodDetails()}
+                onClick={AddingProd}
               >
                 Add Product
               </Button>

@@ -1,5 +1,5 @@
 const express = require("express");
-const app = express();
+
 var bodyParser = require("body-parser");
 const connectDB = require("./database/db");
 const cors = require("cors");
@@ -7,8 +7,13 @@ const morgan = require("morgan");
 const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
 const authCategory = require("./routes/authCategory");
-//app.use(bodyParser.json({ limit: "50mb" }));
-//app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+const app = express();
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, "client/build")));
+// Anything that doesn't match the above, send back index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 app.use(cors());
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON

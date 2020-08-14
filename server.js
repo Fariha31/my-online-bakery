@@ -1,9 +1,8 @@
 const express = require("express");
-
-var bodyParser = require("body-parser");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
 const connectDB = require("./database/db");
 const cors = require("cors");
-const morgan = require("morgan");
 const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
 const authCategory = require("./routes/authCategory");
@@ -16,6 +15,7 @@ app.use(express.json()); //incoming data in JSON
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);
+connectDB();
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, "client/build")));
@@ -23,6 +23,5 @@ app.use(express.static(path.join(__dirname, "client/build")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
-connectDB();
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log(`Connected to port ${port}`));
+//app.listen(port, () => console.log(`Connected to port ${port}`));

@@ -1,5 +1,5 @@
 const express = require("express");
-//const morgan = require("morgan");
+const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const connectDB = require("./database/db");
 const cors = require("cors");
@@ -9,7 +9,7 @@ const authCategory = require("./routes/authCategory");
 const app = express();
 const path = require("path");
 app.use(cors());
-//app.use(morgan("dev")); //management
+app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
 
 app.use("/api/auth", authRoutes);

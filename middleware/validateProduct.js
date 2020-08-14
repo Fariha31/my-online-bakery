@@ -5,7 +5,9 @@ function validateProduct(req, res, next) {
   if (error) {
     const firstError = error.details[0].message;
     console.log(firstError);
-    return res.status(400).send(firstError);
+    return res.status(400).json({
+      errorMessage: firstError,
+    });
   }
   next();
 }

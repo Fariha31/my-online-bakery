@@ -55,26 +55,26 @@ body {
 .signup-container {
   height: 100vh;
 }
-/*cakes.js*/
+/*cakes.js background: #e1d4d4;*/
 .cakes {
-  padding: 4rem 0;
-  background: #e1d4d4;
+  padding: 2rem 0;
 }
 .cakes_section_title h2 {
   text-align: center;
   font-size: 2.5rem;
-  margin-bottom: 5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.3rem;
   text-transform: capitalize;
   letter-spacing: 0.1rem;
   font-family: "Yellowtail", cursive;
   font-weight: bold;
 }
 .cakes-center {
-  width: 90vw;
+  width: 70vw;
   margin: 0 auto;
   max-width: 1170px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   grid-column-gap: 1.5rem;
   grid-row-gap: 2rem;
 }
@@ -96,6 +96,16 @@ body {
   transform: translateX(101%);
   cursor: pointer;
 }
+.cake_expand_btn {
+  position: absolute;
+  top: 0%;
+  right: 0;
+  color: #f09d51;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  cursor: pointer;
+}
+
 .cake_bag_btn:hover {
   color: white;
 }
@@ -116,14 +126,16 @@ body {
 }
 .cake h3 {
   text-transform: capitalize;
+  font-weight: bold;
   font-size: 1.1rem;
   margin-top: 1rem;
   letter-spacing: 0.1rem;
-  text-align: center;
+  text-align: right;
 }
 .cake h4 {
+  font-size: 1rem;
   margin-top: 0.7rem;
   letter-spacing: 0.1rem;
   color: #f09d51;
-  text-align: center;
+  text-align: right;
 }

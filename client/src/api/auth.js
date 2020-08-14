@@ -6,7 +6,7 @@ export const signup = async (data) => {
       "Content-Type": "application/json",
     },
   };
-  const response = await axios.post("/api/auth/signup", data, config);
+  const response = await axios.post("/auth/signup", data, config);
   return response;
 };
 export const login = async (data) => {
@@ -15,15 +15,6 @@ export const login = async (data) => {
       "Content-Type": "application/json",
     },
   };
-  const response = await axios.post("/api/auth/login", data, config);
-  return response;
-};
-export const uploadProducts = async (data) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  };
-  const response = await axios.post("/api/products/addProduct", data, config);
+  const response = await axios.post("/auth/login", data, config);
   return response;
 };

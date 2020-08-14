@@ -25,3 +25,15 @@ export const showSuccessMessage = (msg) => (
     <Grid item xs={3} md={4}></Grid>
   </Grid>
 );
+export const showWarningMessage = (msg) => (
+  <Grid container>
+    <Grid item xs={3} md={4}></Grid>
+    <Grid item xs={6} md={4}>
+      <Alert severity="warning">
+        <AlertTitle>Warning</AlertTitle>
+        {msg}
+      </Alert>
+    </Grid>
+    <Grid item xs={3} md={4}></Grid>
+  </Grid>
+);

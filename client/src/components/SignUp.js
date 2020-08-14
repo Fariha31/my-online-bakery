@@ -14,7 +14,7 @@ import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
 import equals from "validator/lib/equals";
 import LinearBuffer from "../Alerts/ProgressBar";
-import { showErrorMessage, showSuccessMessage } from "../Alerts/showMessage";
+import AlertBar from "../Alerts/AlertBar";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/core/styles";
 import { signup } from "../api/auth";
@@ -115,7 +115,7 @@ const SignUp = () => {
             confirmPassword: "",
             errorMessage: false,
             successMsg: response.data.successMessage,
-            loading: "true",
+            loading: false,
           });
         })
         .catch((err) => {
@@ -129,7 +129,7 @@ const SignUp = () => {
     }
   };
   const SignUpHeader = () => (
-    <Grid container style={{ marginTop: "5rem" }}>
+    <Grid container style={{ marginTop: "0.6rem" }}>
       <Grid item xm={5} md={4}></Grid>
       <Grid item xm={2} md={4}>
         <h2 className={classes.heading}>SignUp</h2>
@@ -148,7 +148,7 @@ const SignUp = () => {
             value={values.username}
             label="Username"
             name="username"
-            variant="outlined"
+            variant="filled"
             fullWidth
             onChange={handleTextChange}
           />
@@ -159,7 +159,7 @@ const SignUp = () => {
             name="email"
             value={values.email}
             fullWidth
-            variant="outlined"
+            variant="filled"
             onChange={handleTextChange}
           />
           <FormControl variant="filled" fullWidth noValidate>
@@ -191,7 +191,7 @@ const SignUp = () => {
               }
             />
           </FormControl>
-          <FormControl variant="outlined" fullWidth noValidate>
+          <FormControl variant="filled" fullWidth noValidate>
             <InputLabel
               style={{ padding: "1rem", paddingLeft: "0" }}
               htmlFor="filled-adornment-password"
@@ -241,9 +241,13 @@ const SignUp = () => {
   return (
     <div>
       {loading && successMsg && <LinearBuffer />}
+      {errorMessage && (
+        <AlertBar type="error" message={errorMessage} autoClose={6000} />
+      )}
+      {successMsg && (
+        <AlertBar type="success" message={successMsg} autoClose={6000} />
+      )}
       {SignUpHeader()}
-      {errorMessage && showErrorMessage(errorMessage)}
-      {successMsg && showSuccessMessage(successMsg)}
       {SignUpForm()}
     </div>
   );

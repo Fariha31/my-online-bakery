@@ -14,7 +14,7 @@ import {
 import { Link, useHistory } from "react-router-dom";
 import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
-import { showErrorMessage } from "../Alerts/showMessage";
+import AlertBar from "../Alerts/AlertBar";
 import LinearBuffer from "../Alerts/ProgressBar";
 import { login } from "../api/auth";
 import { authentication, isAuthenticated } from "../clientStorages.js/auth";
@@ -103,7 +103,7 @@ const LogIn = () => {
     }
   };
   const LogInHeader = () => (
-    <Grid container style={{ marginTop: "5rem" }}>
+    <Grid container style={{ marginTop: "0.6rem" }}>
       <Grid item xm={5} md={4}></Grid>
       <Grid item xm={2} md={4}>
         <h2 className={classes.heading}>Login</h2>
@@ -123,10 +123,10 @@ const LogIn = () => {
             name="email"
             value={values.email}
             fullWidth
-            variant="outlined"
+            variant="filled"
             onChange={handleTextChange}
           />
-          <FormControl variant="outlined" fullWidth noValidate>
+          <FormControl variant="filled" fullWidth noValidate>
             <InputLabel
               style={{ padding: "1rem", paddingLeft: "0" }}
               htmlFor="filled-adornment-password"
@@ -163,7 +163,7 @@ const LogIn = () => {
             fullWidth
             onClick={Register}
           >
-            SignUp
+            LogIn
           </Button>
           <p style={{ padding: "1rem" }}>
             Don't have an Account?
@@ -178,7 +178,9 @@ const LogIn = () => {
     <div>
       {loading && <LinearBuffer />}
       {LogInHeader()}
-      {errorMessage && showErrorMessage(errorMessage)}
+      {errorMessage && (
+        <AlertBar type="error" message={errorMessage} autoClose={6000} />
+      )}
       {LogInForm()}
     </div>
   );

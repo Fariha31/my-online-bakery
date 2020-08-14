@@ -8,7 +8,7 @@ const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
 const authCategory = require("./routes/authCategory");
 const app = express();
-
+const path = require("path");
 app.use(cors());
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON

@@ -14,9 +14,6 @@ app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
 
 connectDB();
-app.get("/", (req, res) => {
-  res.send("inside server");
-});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);

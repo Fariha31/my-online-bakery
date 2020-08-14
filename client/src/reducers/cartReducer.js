@@ -23,7 +23,8 @@ export const cartReducer = (state, action) => {
     case "DELETE_ITEM":
       return state.filter((cart) => cart.id !== action.id);
     case "INC_QTY":
-      return { ...state, count1: state.count1 + 1 };
+      console.log(state.find((cart) => cart.id === action.id));
+      return state.find((cart) => cart.id === action.id);
 
     default:
       return state;

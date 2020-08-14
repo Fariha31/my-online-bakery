@@ -23,7 +23,7 @@ export const cartReducer = (state, action) => {
     case "DELETE_ITEM":
       return state.filter((cart) => cart.id !== action.id);
     case "INC_QTY":
-      return state + 1;
+      return { ...state, count1: state.count1 + 1 };
 
     default:
       return state;

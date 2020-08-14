@@ -41,7 +41,10 @@ const CartDetails = (props) => {
               aria-label="upload picture"
               component="span"
               onClick={() =>
-                dispatch({ type: "INC_QTY", qty: cartItem.quantity })
+                dispatch({
+                  type: "INC_QTY",
+                  count1: cartItem.quantity,
+                })
               }
             >
               <AddIcon />

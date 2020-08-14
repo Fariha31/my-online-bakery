@@ -5,7 +5,7 @@ import { CartContext } from "../contexts/CartContext";
 
 const CartList = () => {
   const { cart } = useContext(CartContext);
-  var total = cart.reduce((acc, cart) => acc + cart.price * cart.quantity, 0);
+  var total = 0; //cart.reduce((acc, cart) => acc + cart.price * cart.quantity, 0);
   return cart.length !== 0 ? (
     <div style={{ padding: "3rem" }}>
       <h2 className="text-center" style={{ padding: "0.7rem" }}>

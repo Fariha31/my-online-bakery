@@ -11,11 +11,10 @@ const path = require("path");
 app.use(cors());
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
-
+connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);
-connectDB();
 
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, "client/build")));

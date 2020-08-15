@@ -1,13 +1,41 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
 import { Button, Grid } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
+import { useHistory } from "react-router-dom";
 const CartDetails = (props) => {
-  const { dispatch } = useContext(CartContext);
-  console.log(props);
+  const { cart, dispatch } = useContext(CartContext);
   const { cartItem } = props;
+  let history = useHistory();
+  const [qty, setQty] = useState(cartItem.quantity);
+  const incQty = (id) => {
+    var basket = JSON.parse(localStorage.getItem("cart"));
+    basket.find((item) => {
+      if (item.id == id) {
+        item.quantity = item.quantity + 1;
+        setQty(item.quantity);
+        history.push("/Cart/Items");
+      }
+    });
+    localStorage.setItem("cart", JSON.stringify(basket));
+  };
+
+  const decQty = (id) => {
+    var basket = JSON.parse(localStorage.getItem("cart"));
+    basket.find((item) => {
+      if (item.id == id) {
+        if (item.quantity === 1) dispatch({ type: "DELETE_ITEM", id: item.id });
+        else {
+          item.quantity = item.quantity - 1;
+          setQty(item.quantity);
+          localStorage.setItem("cart", JSON.stringify(basket));
+          history.push("/Cart/Items");
+        }
+      }
+    });
+  };
 
   return (
     <Grid item>
@@ -27,20 +55,16 @@ const CartDetails = (props) => {
               color="primary"
               aria-label="upload picture"
               component="span"
-              onClick={() => {
-                if (cartItem.quantity > 0) {
-                  cartItem.quantity = cartItem.quantity - 1;
-                } else cartItem.quantity = 0;
-              }}
+              onClick={() => decQty(cartItem.id)}
             >
               <RemoveIcon />
             </IconButton>
-            <span>{cartItem.quantity}</span>
+            <span>{qty}</span>
             <IconButton
               color="primary"
               aria-label="upload picture"
               component="span"
-              onClick={() => dispatch({ type: "INC_QTY", id: cartItem.id })}
+              onClick={() => incQty(cartItem.id)}
             >
               <AddIcon />
             </IconButton>

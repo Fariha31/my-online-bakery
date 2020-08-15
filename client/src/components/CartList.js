@@ -1,28 +1,29 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CartDetails from "./CartDetails";
 import { Grid } from "@material-ui/core";
 import { CartContext } from "../contexts/CartContext";
 
 const CartList = () => {
   const { cart } = useContext(CartContext);
-  var total = 0; //cart.reduce((acc, cart) => acc + cart.price * cart.quantity, 0);
+  let total = 0;
+  var basket = JSON.parse(localStorage.getItem("cart"));
+  total = basket.reduce((acc, cart) => acc + cart.price * cart.quantity, 0);
+
   return cart.length !== 0 ? (
     <div style={{ padding: "3rem" }}>
       <h2 className="text-center" style={{ padding: "0.7rem" }}>
         My Shopping Cart
       </h2>
-      <Grid container>
+      <Grid container style={{ marginTop: "0.5rem" }}>
         {cart.map((cartItem, index) => {
           return <CartDetails key={index} cartItem={cartItem} />;
         })}
       </Grid>
-      <div>
-        <span style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
-          <b>
-            <i>Total Amount :</i>
-          </b>
+      <div className="text-right">
+        <span style={{ fontSize: "1.4rem", fontWeight: "bold" }}>
+          <b>Total Amount :</b>
         </span>
-        <span style={{ marginLeft: "0.4rem", fontSize: "1.2rem" }}>
+        <span style={{ marginLeft: "0.4rem", fontSize: "1.1rem" }}>
           PKR/-{total}
         </span>
       </div>

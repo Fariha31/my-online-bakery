@@ -45,10 +45,9 @@ const DetailProductPage = (props) => {
     if (cart.length >= 1) {
       cart.find((item) => {
         if (item.id === data.id) {
-          item.quantity = item.quantity + 1;
           setValues({
             ...values,
-            infoMessage: "Already added,now quantity = " + item.quantity,
+            infoMessage: "Already added to the cart",
           });
           count = count + 1;
         }
@@ -78,13 +77,13 @@ const DetailProductPage = (props) => {
   return (
     <Grid container spacing={0}>
       {infoMessage && (
-        <AlertBar type="info" message={infoMessage} autoClose={8000} />
+        <AlertBar type="info" message={infoMessage} autoClose={4000} />
       )}
       {errorMessage && (
-        <AlertBar type="error" message={errorMessage} autoClose={6000} />
+        <AlertBar type="error" message={errorMessage} autoClose={4000} />
       )}
       {successMessage && (
-        <AlertBar type="success" message={successMessage} autoClose={6000} />
+        <AlertBar type="success" message={successMessage} autoClose={4000} />
       )}
       {errorMessage ? (
         <div style={{ paddingTop: "6rem", paddingLeft: "6rem" }}>

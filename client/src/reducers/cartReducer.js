@@ -11,19 +11,12 @@ export const cartReducer = (state, action) => {
           quantity: action.cart.quantity,
         },
       ];
-    case "SET_ITEM":
-      return [
-        {
-          title: action.cart.title,
-          photo: action.cart.photo,
-          price: action.cart.price,
-          id: action.cart.id,
-        },
-      ];
+
     case "DELETE_ITEM":
       return state.filter((cart) => cart.id !== action.id);
     case "INC_QTY":
-      return state.filter((cart) => cart.id !== action.id);
+      console.log(state);
+      return (state += 1);
 
     default:
       return state;

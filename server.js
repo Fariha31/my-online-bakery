@@ -1,17 +1,19 @@
 const express = require("express");
 const morgan = require("morgan");
-const bodyParser = require("body-parser");
-const connectDB = require("./database/db");
+
+//const connectDB = require("./database/db");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
 const authCategory = require("./routes/authCategory");
 const app = express();
 const path = require("path");
+require("dotenv").config();
 app.use(cors());
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
-connectDB();
+//connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);
@@ -24,4 +26,14 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 const port = process.env.PORT || 5000;
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongo connected");
+});
 app.listen(port, () => console.log(`Connected to port ${port}`));

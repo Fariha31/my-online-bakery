@@ -7,7 +7,7 @@ const ProductSchema = mongoose.Schema({
   photo: String,
   proCategory: String,
 });
-const Products = mongoose.model("Products", ProductSchema);
+const Products = mongoose.model("products", ProductSchema);
 
 function validateProduct(data) {
   const schema = Joi.object({

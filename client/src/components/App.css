@@ -139,3 +139,11 @@ body {
   color: #f09d51;
   text-align: right;
 }
+.stars {
+  color: #bb9230;
+}
+.paragraph {
+  font-style: "italic";
+  font-size: 2rem;
+  padding: 1rem;
+}

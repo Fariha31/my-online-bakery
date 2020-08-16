@@ -1,25 +1,17 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useContext } from "react";
 import { Link, withRouter, useHistory } from "react-router-dom";
 import { isAuthenticated, logout } from "../clientStorages.js/auth";
+import { CartContext } from "../contexts/CartContext";
 
 const Header = ({ history }) => {
   history = useHistory();
+  const { cart } = useContext(CartContext);
+
   const handleLogOut = (evt) => {
     logout(() => {
       history.push("/login");
     });
   };
-  /* const componentDidMount = () => {
-    window.addEventListener("scroll", () => {
-      const isTop = window.scrollY;
-      const nav = document.getElementById("nav");
-      if (isTop > 500) {
-        nav.classList.add("scrolled");
-      } else {
-        nav.classList.remove("scrolled");
-      }
-    });
-  };*/
 
   const showNavbar = () => (
     <div>
@@ -76,11 +68,6 @@ const Header = ({ history }) => {
               <Fragment>
                 <li className="nav-item">
                   <Link to="/" className="nav-link">
-                    <i className="fa fa-home" aria-hidden="true"></i> Dashboard
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="/" className="nav-link">
                     Pages
                   </Link>
                 </li>
@@ -89,23 +76,12 @@ const Header = ({ history }) => {
                     Contact Us
                   </Link>
                 </li>
-
-                <li className="nav-item mx-2">
-                  <Link to="/">
-                    <div className="cart-icon">
-                      <i className="fa fa-shopping-cart p-2" aria-hidden="true">
-                        <div className="cart-item"></div>
-                        <span className="shopping-counter">0</span>
-                      </i>
-                    </div>
-                  </Link>
-                </li>
               </Fragment>
             )}
             {isAuthenticated() && isAuthenticated().role === 1 && (
               <Fragment>
                 <li className="nav-item">
-                  <Link to="/" className="nav-link">
+                  <Link to="/admin/dashboard" className="nav-link">
                     <i className="fa fa-home" aria-hidden="true"></i> Dashboard
                   </Link>
                 </li>
@@ -113,6 +89,16 @@ const Header = ({ history }) => {
             )}
             {isAuthenticated() && (
               <Fragment>
+                <li className="nav-item mx-2">
+                  <Link to="/Cart/Items">
+                    <div className="cart-icon">
+                      <i className="fa fa-shopping-cart p-2" aria-hidden="true">
+                        <div className="cart-item"></div>
+                        <span className="shopping-counter">{cart.length}</span>
+                      </i>
+                    </div>
+                  </Link>
+                </li>
                 <li className="nav-item">
                   <button
                     className="btn text-decoration-none btn-link   pl-0"

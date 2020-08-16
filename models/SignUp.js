@@ -12,7 +12,7 @@ const SignupSchema = mongoose.Schema(
   },
   { timestamps: true }
 );
-const Signup = mongoose.model("SignUp", SignupSchema);
+const Signup = mongoose.model("signUp", SignupSchema);
 
 function validateSignup(data) {
   const schema = Joi.object({

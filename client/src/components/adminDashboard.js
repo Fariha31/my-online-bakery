@@ -91,7 +91,12 @@ const AdminDashboard = (props) => {
             </button>
           </div>
           <div className="col-md-4 my-1">
-            <button className="btn btn-outline-danger btn-block">
+            <button
+              className="btn btn-outline-danger btn-block"
+              onClick={(e) => {
+                props.history.push("/admin/dashboard/uploadProduct");
+              }}
+            >
               <i className="fa fa-plus" aria-hidden="true"></i> Add Product
             </button>
           </div>
@@ -115,7 +120,12 @@ const AdminDashboard = (props) => {
             </button>
           </div>
           <div className="col-md-4 my-1">
-            <button className="btn btn-outline-danger btn-block">
+            <button
+              className="btn btn-outline-danger btn-block"
+              onClick={(e) => {
+                props.history.push("/admin/dashboard/DisplayProduct");
+              }}
+            >
               <i className="fa fa-plus" aria-hidden="true"></i> View Product
             </button>
           </div>

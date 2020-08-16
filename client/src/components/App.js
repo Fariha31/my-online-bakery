@@ -21,13 +21,14 @@ import DisplayProd from "./displayProduct";
 import DetailProductPage from "./DetailProductPage";
 import CartContextProvider from "../contexts/CartContext";
 import CartList from "./CartList";
+import FrontPage from "./FrontPage";
 const App = () => {
   return (
     <CartContextProvider>
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" component={FrontPage} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={LogIn} />
           <UserRoute exact path="/user/dashboard" component={userDashboard} />
@@ -43,22 +44,22 @@ const App = () => {
             component={DisplayProducts}
           />
           <Route exact path="/Cart/Items" component={CartList} />
-          <Route
+          <AdminRoute
             exact
             path="/admin/dashboard/DisplayCategory"
             component={DisplayCategory}
           />
-          <Route
+          <AdminRoute
             exact
             path="/admin/dashboard/uploadProduct"
             component={UploadProduct}
           />
-          <Route
+          <AdminRoute
             exact
             path="/admin/dashboard/updateProduct/:id"
             component={UpdateProduct}
           />
-          <Route
+          <AdminRoute
             exact
             path="/admin/dashboard/updateCategory/:id"
             component={UpdateCategory}
@@ -68,8 +69,9 @@ const App = () => {
             path="/home/item/itemDetail/:id"
             component={DetailProductPage}
           />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/home/Items" component={DisplayProd} />
-          <Route exact path="/category" component={GetCategory} />
+          <AdminRoute exact path="/category" component={GetCategory} />
           <Route exact path="/notfound" component={notFound} />
           <Redirect to="/notfound" />
         </Switch>

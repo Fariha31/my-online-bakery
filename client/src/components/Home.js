@@ -91,7 +91,7 @@ const Home = () => {
                 <i className="fa fa-star stars" aria-hidden="true"></i>
                 <i className="fa fa-star stars" aria-hidden="true"></i>
               </div>
-              <p className="paragraph text-center">
+              <p className="paragraph text-center p-2">
                 "As chefs,especially pastry chefs,your creativity plays such big
                 part of daily work"
               </p>
@@ -105,7 +105,7 @@ const Home = () => {
                 <i className="fa fa-star stars" aria-hidden="true"></i>
                 <i className="fa fa-star stars" aria-hidden="true"></i>
               </div>
-              <p className="paragraph text-center">
+              <p className="paragraph text-center p-2">
                 "Quality breads and pastries made to order.Beautiful Cakes for
                 Beautiful Occasions"
               </p>
@@ -119,7 +119,7 @@ const Home = () => {
                 <i className="fa fa-star stars" aria-hidden="true"></i>
                 <i className="fa fa-star stars" aria-hidden="true"></i>
               </div>
-              <p className="paragraph text-center">
+              <p className="paragraph text-center p-2">
                 "Everyone has a favourite cake,pastry,pudding or pie from when
                 they were kids"
               </p>

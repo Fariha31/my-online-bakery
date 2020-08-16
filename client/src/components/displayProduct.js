@@ -3,6 +3,7 @@ import { Button, Grid } from "@material-ui/core";
 import CheckBoxes from "./HomePageSections.js/CategoryFilters";
 import { useHistory } from "react-router-dom";
 import PriceFilter from "./HomePageSections.js/PriceFilter";
+import Footer from "./Footer";
 import { price } from "./HomePageSections.js/FiltersData";
 import { CartContext } from "../contexts/CartContext";
 import AlertBar from "../Alerts/AlertBar";
@@ -224,6 +225,7 @@ const DisplayProd = () => {
           )}
         </Grid>
       </Grid>
+      <Footer />
     </section>
   );
 };

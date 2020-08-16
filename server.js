@@ -6,12 +6,23 @@ const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
 const authCategory = require("./routes/authCategory");
 const app = express();
+const mongoose = require("mongoose");
 const path = require("path");
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
-connectDB();
-
+//connectDB();
+require("dotenv").config();
 app.use(cors());
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true,
+});
+const connection = mongoose.connection;
+connection.once("open", () => {
+  console.log("Mongo Connected");
+});
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);

@@ -10,6 +10,7 @@ const CartDetails = (props) => {
   const { cartItem } = props;
   let history = useHistory();
   const [qty, setQty] = useState(cartItem.quantity);
+
   const incQty = (id) => {
     var basket = JSON.parse(localStorage.getItem("cart"));
     basket.find((item) => {

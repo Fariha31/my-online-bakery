@@ -12,7 +12,6 @@ import UserRoute from "./userRoutes";
 import UploadProduct from "./uploadProduct";
 import UpdateProduct from "./updateProduct";
 import UpdateCategory from "./updateCategory";
-import CakesHomePage from "./cakes";
 import DisplayProducts from "./DisplayProducts";
 import DisplayCategory from "./DisplayCategory";
 import GetCategory from "./getOnlyCategory";
@@ -22,13 +21,21 @@ import DetailProductPage from "./DetailProductPage";
 import CartContextProvider from "../contexts/CartContext";
 import CartList from "./CartList";
 import FrontPage from "./FrontPage";
+
 const App = () => {
   return (
     <CartContextProvider>
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path="/" component={FrontPage} />
+          <Route
+            exact
+            path="/home/item/itemDetail/:id"
+            component={DetailProductPage}
+          />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home/Items" component={DisplayProd} />
+
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={LogIn} />
           <UserRoute exact path="/user/dashboard" component={userDashboard} />
@@ -37,7 +44,6 @@ const App = () => {
             path="/admin/dashboard"
             component={AdminDashboard}
           />
-          <Route exact path="/menu/Cakes/HomePage" component={CakesHomePage} />
           <Route
             exact
             path="/admin/dashboard/DisplayProduct"
@@ -64,13 +70,7 @@ const App = () => {
             path="/admin/dashboard/updateCategory/:id"
             component={UpdateCategory}
           />
-          <Route
-            exact
-            path="/home/item/itemDetail/:id"
-            component={DetailProductPage}
-          />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/home/Items" component={DisplayProd} />
+
           <AdminRoute exact path="/category" component={GetCategory} />
           <Route exact path="/notfound" component={notFound} />
           <Redirect to="/notfound" />

@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-const connectDB = require("./database/db");
+//const connectDB = require("./database/db");
 const cors = require("cors");
 const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
@@ -29,14 +29,14 @@ app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);
 app.use("/api/orders", authOrder);
-//if (process.env.NODE_ENV === "production") {
-// Serve static files from the React frontend app
-app.use(express.static(path.join(__dirname, "client/build")));
-// Anything that doesn't match the above, send back index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/build/index.html"));
-});
-//}
+if (process.env.NODE_ENV === "production") {
+  // Serve static files from the React frontend app
+  app.use(express.static(path.join(__dirname, "client/build")));
+  // Anything that doesn't match the above, send back index.html
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "/client/build/index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 

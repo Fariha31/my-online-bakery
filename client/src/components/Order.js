@@ -3,7 +3,7 @@ import isEmail from "validator/lib/isEmail";
 import isEmpty from "validator/lib/isEmpty";
 import { makeStyles } from "@material-ui/core/styles";
 import AlertBar from "../Alerts/AlertBar";
-import useHistory from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import orderService from "../services/OrderService";
 import { TextField, Button, Grid } from "@material-ui/core";
 import { CartContext } from "../contexts/CartContext";

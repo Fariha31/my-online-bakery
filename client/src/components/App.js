@@ -20,6 +20,8 @@ import DisplayProd from "./displayProduct";
 import DetailProductPage from "./DetailProductPage";
 import CartContextProvider from "../contexts/CartContext";
 import CartList from "./CartList";
+import ViewOrder from "./ViewOrder";
+import Order from "./Order";
 
 const App = () => {
   return (
@@ -49,6 +51,7 @@ const App = () => {
             path="/admin/dashboard/DisplayProduct"
             component={DisplayProducts}
           />
+          <Route exact path="/Cart/Items/Order" component={Order} />
           <Route exact path="/Cart/Items" component={CartList} />
           <AdminRoute
             exact
@@ -70,7 +73,11 @@ const App = () => {
             path="/admin/dashboard/updateCategory/:id"
             component={UpdateCategory}
           />
-
+          <AdminRoute
+            exact
+            path="/admin/dashboard/viewOrder"
+            component={ViewOrder}
+          />
           <AdminRoute exact path="/category" component={GetCategory} />
           <Route exact path="/notfound" component={notFound} />
           <Redirect to="/notfound" />

@@ -21,6 +21,7 @@ const Home = () => {
   let history = useHistory();
   return (
     <div style={{ marginTop: "3rem" }}>
+      <h3 style={{ paddingBottom: "0.5rem", textAlign: "center" }}>Gallery</h3>
       <div className="container ">
         <Grid container>
           <Grid item md={6}>
@@ -40,7 +41,7 @@ const Home = () => {
                   style={{
                     paddingBottom: "0.3rem",
                     paddingRight: "0.3rem",
-                       }}
+                  }}
                 >
                   <h5> </h5>
                   <p>
@@ -55,7 +56,7 @@ const Home = () => {
                       history.push("/home/Items");
                     }}
                   >
-                    Read More
+                    See More
                   </Button>
                 </div>
               </Grid>

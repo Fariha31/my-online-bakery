@@ -130,7 +130,12 @@ const AdminDashboard = (props) => {
             </button>
           </div>
           <div className="col-md-4 my-1">
-            <button className="btn btn-outline-warning btn-block">
+            <button
+              className="btn btn-outline-warning btn-block"
+              onClick={(e) => {
+                props.history.push("/admin/dashboard/viewOrder");
+              }}
+            >
               <i class="fa fa-money" aria-hidden="true"></i> View Orders
             </button>
           </div>

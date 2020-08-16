@@ -3,14 +3,12 @@ import productService from "../services/ProductService";
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import { CartContext } from "../contexts/CartContext";
-import { useHistory } from "react-router-dom";
 import Footer from "./Footer";
 import AlertBar from "../Alerts/AlertBar";
 const DetailProductPage = (props) => {
   var count = 0;
   const { cart, dispatch } = useContext(CartContext);
   const [Product, setProduct] = useState([]);
-  let history = useHistory();
   const id = props.match.params.id;
   const [values, setValues] = useState({
     errorMessage: "",

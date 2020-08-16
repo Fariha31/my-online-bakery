@@ -186,6 +186,7 @@ const UpdateProduct = (props) => {
                       marginLeft: "0.4rem",
                     }}
                     src={photo}
+                    alt=" "
                   />
                 </Grid>
               </Grid>

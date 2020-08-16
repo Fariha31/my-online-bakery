@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <section className="footer_area">
@@ -17,24 +18,24 @@ const Footer = () => {
                 </p>{" "}
                 <ul className="nav">
                   <li>
-                    <a href="#">
+                    <Link to="/">
                       <i className="fa fa-facebook"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/">
                       <i className="fa fa-linkedin"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/">
                       <i className="fa fa-twitter"></i>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">
+                    <Link to="/">
                       <i className="fa fa-google-plus"></i>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </aside>
@@ -46,16 +47,16 @@ const Footer = () => {
                 </div>
                 <ul className="f_list_style">
                   <li>
-                    <a href="#">Your Account</a>
+                    <Link to="/">Your Account</Link>
                   </li>
                   <li>
-                    <a href="#">View Order</a>
+                    <Link to="/">View Order</Link>
                   </li>
                   <li>
-                    <a href="#">Privacy Policy</a>
+                    <Link to="/">Privacy Policy</Link>
                   </li>
                   <li>
-                    <a href="#">Terms &amp; Conditionis</a>
+                    <Link to="/">Terms &amp; Conditionis</Link>
                   </li>
                 </ul>
               </aside>
@@ -67,13 +68,13 @@ const Footer = () => {
                 </div>
                 <ul className="f_list_style">
                   <li>
-                    <a href="#">Mon. : Fri.: 8 am - 8 pm</a>
+                    <Link to="/">Mon. : Fri.: 8 am - 8 pm</Link>
                   </li>
                   <li>
-                    <a href="#">Sat. : 9am - 4pm</a>
+                    <Link to="/">Sat. : 9am - 4pm</Link>
                   </li>
                   <li>
-                    <a href="#">Sun. : Closed</a>
+                    <Link to="/">Sun. : Closed</Link>
                   </li>
                 </ul>
               </aside>

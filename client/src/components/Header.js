@@ -89,6 +89,16 @@ const Header = ({ history }) => {
             )}
             {isAuthenticated() && (
               <Fragment>
+                <li className="nav-item">
+                  <Link to="/" className="nav-link">
+                    Home
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/home/Items" className="nav-link">
+                    Gallery
+                  </Link>
+                </li>
                 <li className="nav-item mx-2">
                   <Link to="/Cart/Items">
                     <div className="cart-icon">
@@ -99,6 +109,7 @@ const Header = ({ history }) => {
                     </div>
                   </Link>
                 </li>
+
                 <li className="nav-item">
                   <button
                     className="btn text-decoration-none btn-link   pl-0"

@@ -5,14 +5,16 @@ const cors = require("cors");
 const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
 const authCategory = require("./routes/authCategory");
+const authOrder = require("./routes/authOrder");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
 //connectDB();
-require("dotenv").config();
+
 app.use(cors());
+require("dotenv").config();
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -26,6 +28,7 @@ connection.once("open", () => {
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);
+app.use("/api/orders", authOrder);
 if (process.env.NODE_ENV === "production") {
   // Serve static files from the React frontend app
   app.use(express.static(path.join(__dirname, "client/build")));

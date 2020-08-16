@@ -1,12 +1,12 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../contexts/CartContext";
-import { Button, Grid } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import RemoveIcon from "@material-ui/icons/Remove";
 import AddIcon from "@material-ui/icons/Add";
 import { useHistory } from "react-router-dom";
 const CartDetails = (props) => {
-  const { cart, dispatch } = useContext(CartContext);
+  const { dispatch } = useContext(CartContext);
   const { cartItem } = props;
   let history = useHistory();
   const [qty, setQty] = useState(cartItem.quantity);

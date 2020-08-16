@@ -14,19 +14,6 @@ export const cartReducer = (state, action) => {
 
     case "DELETE_ITEM":
       return state.filter((cart) => cart.id !== action.id);
-    case "INC_QTY":
-      console.log(state);
-      return (state += 1);
-
-    default:
-      return state;
-  }
-};
-export const ncartReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_ITEM":
-      state = action.id;
-      return state;
 
     default:
       return state;

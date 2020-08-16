@@ -43,7 +43,7 @@ const LogIn = () => {
       history.push("/user/dashboard");
   }, [history]);
   const [values, setValues] = useState({
-    email: "f@gmail.com",
+    email: "fariha@gmail.com",
     password: "1234567",
     errorMessage: "",
     showPassword: false,

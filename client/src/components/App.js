@@ -20,7 +20,6 @@ import DisplayProd from "./displayProduct";
 import DetailProductPage from "./DetailProductPage";
 import CartContextProvider from "../contexts/CartContext";
 import CartList from "./CartList";
-import FrontPage from "./FrontPage";
 
 const App = () => {
   return (
@@ -34,6 +33,7 @@ const App = () => {
             component={DetailProductPage}
           />
           <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/home/Items" component={DisplayProd} />
 
           <Route exact path="/signup" component={SignUp} />

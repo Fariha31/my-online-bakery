@@ -40,7 +40,7 @@ const Home = () => {
                   style={{
                     paddingBottom: "0.3rem",
                     paddingRight: "0.3rem",
-                  }}
+                       }}
                 >
                   <h5> </h5>
                   <p>

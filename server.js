@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-//const connectDB = require("./database/db");
+const connectDB = require("./database/db");
 const cors = require("cors");
 const authRoutes = require("./routes/authUser");
 const authProduct = require("./routes/authProduct");
@@ -11,10 +11,10 @@ const mongoose = require("mongoose");
 const path = require("path");
 app.use(morgan("dev")); //management
 app.use(express.json()); //incoming data in JSON
-//connectDB();
+connectDB();
 
 app.use(cors());
-require("dotenv").config();
+/*require("dotenv").config();
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {
   useNewUrlParser: true,
@@ -24,7 +24,7 @@ mongoose.connect(uri, {
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("Mongo Connected");
-});
+});*/
 app.use("/api/auth", authRoutes);
 app.use("/api/products", authProduct);
 app.use("/api/category", authCategory);
